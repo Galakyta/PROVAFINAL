@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "DFXT2N8KG7lSoKKT2htIIg7qjgFrvRjFSjiI6iC9mSXpW+aYUGOT/G4me5K2VbG4ZFAqLwwUqRKrH2Ryovp/7Q==",
+  "success": false,
+  "projectFilePath": "C:\\Users\\MARCOSVINICIUSDAROCH\\Desktop\\FUNCIONALIDADES\\API-GESTAO\\prototipoGestao.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Não é possível carregar o índice de serviço para a origem https://api.nuget.org/v3/index.json.",
+      "libraryId": "Microsoft.EntityFrameworkCore.Design"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Não é possível carregar o índice de serviço para a origem https://api.nuget.org/v3/index.json.",
+      "libraryId": "Microsoft.EntityFrameworkCore.Sqlite"
+    }
+  ]
+}
