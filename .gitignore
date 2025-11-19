@@ -19,3 +19,8 @@ out/
 *.nupkg
 novapasta.sln 
 
+# isso aqui é pro banco de dados e o dll ir junto nesse caso
+!publish/*.dll
+!publish/**/*.dll
+!publish/*.json
+!publish/**/*.json
