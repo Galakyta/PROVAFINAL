@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>API DE GERENCIAMENTO</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="header">
+
+        <h1>API DE GESTÃO ANDERTECH</h1>
+
+    </div>
+    
+
+    <!-- =============== CRIAR =============== -->
+    <div class="card">
+        <button class="card-header">Criar Dispositivo ▼</button>
+        <div class="card-body">
+            <form onsubmit="criar(event)">
+                <input id="cFabricante" placeholder="Fabricante" required>
+                <input id="cEmpresa" placeholder="Empresa" required>
+                <input id="cLocal" placeholder="Local" required>
+
+                <select id="cTipo" required onchange="mostrarOutroTipo(this)"
+>
+                    <option value="">Selecione o Tipo</option>
+                    <option value="outro">Outro, digite aqui</option>
+                    <option value="1">Máquina de Vendas</option>
+                    <option value="2">Máquina de Chicletes</option>
+                    <option value="3">Lavanderia Autônoma</option>
+                    
+                </select>
+
+                <select id="cAtivo">
+                    <option value="true">Ativo</option>
+                    <option value="false">Inativo</option>
+                </select>
+
+                <input id="cLucro" type="number" placeholder="Lucro" required>
+                <input id="cCusto" type="number" placeholder="Custo Operação" required>
+
+                <input id="cTipoOutro" placeholder="Digite o tipo" style="display:none; margin-top:5px;">
+
+                <button type="submit">Criar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- =============== ATUALIZAR =============== -->
+    <div class="card">
+        <button class="card-header">Atualizar Dispositivo ▼</button>
+        <div class="card-body">
+            <form onsubmit="atualizar(event)">
+                <input id="uId" placeholder="ID" required>
+
+                <input id="uFabricante" placeholder="Fabricante">
+                <input id="uEmpresa" placeholder="Empresa">
+                <input id="uLocal" placeholder="Local">
+
+                <select id="uTipo">
+                    <option value="">Tipo</option>
+                    <option value="1">Máquina de Vendas</option>
+                    <option value="2">Máquina de Chicletes</option>
+                    <option value="3">Lavanderia Autônoma</option>
+                </select>
+
+                <select id="uAtivo">
+                    <option value="true">Ativo</option>
+                    <option value="false">Inativo</option>
+                </select>
+
+                <input id="uLucro" type="number" placeholder="Lucro">
+                <input id="uCusto" type="number" placeholder="Custo Operação">
+
+                <button type="submit">Atualizar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- =============== DELETAR =============== -->
+    <div class="card">
+        <button class="card-header">Deletar Dispositivo ▼</button>
+        <div class="card-body">
+            <form onsubmit="deletar(event)">
+                <input id="dId" placeholder="ID do dispositivo" required>
+                <button type="submit">Deletar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- =============== LISTAR =============== -->
+    <div class="card">
+        <button class="card-header">Listar Dispositivos ▼</button>
+        <div class="card-body">
+            <button onclick="listar()">Atualizar Lista</button>
+            <table id="tabela">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Fabricante</th>
+                        <th>Empresa</th>
+                        <th>Local</th>
+                        <th>Tipo</th>
+                        <th>Ativo</th>
+                        <th>Lucro</th>
+                        <th>Custo Operação</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+     <!-- =============== adicionar despesas =============== -->
+    <div class="card">
+        <button class="card-header">Adicionar despesas ▼</button>
+        <div class="card-body">
+            <form onsubmit="criarDespesa(event)">
+                <input id="dNome" placeholder="nome da despesa" required>
+                <input id="dData" type="date" placeholder="data" required>
+                <input id="dCategoria" placeholder="categoria ex: manutenção" required>
+
+                <input id="dValor" type="number" step="0.01" placeholder="valor" required> <!--step é pra ter o encrementador de centavos decimais, pra facilita adiciona os centavos-->>
+                <input id="dImposto" type="number" step="0.01" placeholder="impostos" required>
+
+                <button type="submit">Criar despesa</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- =============== delete das depsesas =============== -->
+    <div class="card">
+    <button class="card-header">Deletar despesas▼</button>
+    <div class="card-body">
+        <form onsubmit="deletarDespesa(event)">
+            <input id="delDespId" type="number" placeholder="ID da despesa" required>
+            <button type="submit">Deletar Despesa</button>
+        </form>
+    </div>
+    </div>
+
+
+    <!-- =============== LISTAR depsesas=============== -->
+    <div class="card">
+        <button class="card-header">Listar Despesas ▼</button>
+        <div class="card-body">
+            <button onclick="listarDespesas()">Atualizar Lista</button>
+            <table id="tabelaDeDespesas">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Valor</th>
+                        <th>Data</th>
+                        <th>Categoria</th>
+                        <th>Imposto</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="card">
+    <button class="card-header">Atualizar Despesa ▼</button>
+    <div class="card-body">
+        <form onsubmit="atualizarDespesa(event)">
+
+            <input id="uDespId" placeholder="ID" required>
+            <input id="uDespNome" placeholder="Nome da despesa">
+            <input id="uDespData" type="date" placeholder="Data">
+            <input id="uDespCategoria" placeholder="Categoria">
+
+            <input id="uDespValor" type="number" placeholder="Valor">
+            <input id="uDespImposto" type="number" placeholder="Imposto">
+
+            <button type="submit">Atualizar</button>
+        </form>
+    </div>
+</div>
+
+    
+
+    <!-- =============== LISTAR relatorio final =============== -->
+<div class="card">
+    <button class="card-header">Relatorio ▼</button>
+    <div class="card-body">
+        <button onclick="relatorio()">Atualizar Lista</button>
+        <table id="relatorio">
+            <thead>
+                <tr>
+                    <th>Dispositivos</th>
+                    <th>Quantidade de Despesas</th>
+                    <th>Lucro Bruto</th>
+                    <th>Despesas Brutas</th>
+                    <th>Lucro Final</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+    
+
+    <script src="js/app.js"></script>
+</body>
+</html>
